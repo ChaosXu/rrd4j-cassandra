@@ -20,7 +20,6 @@ class CassandraBackend extends RrdByteArrayBackend {
     public static final String RRD = "rrd";
     private final ColumnFamilyTemplate<String,String> template;
     private boolean dirty;
-    private String columnName;
 
     /**
      * <p>Constructor for RrdMongoDBBackend.</p>
