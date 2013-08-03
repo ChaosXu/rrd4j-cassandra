@@ -5,7 +5,7 @@ A backend of rrd4j for store data in cassandra
 
 Sample
 -----
-```java
+```
 import com.chaosxu.rrd4j.backend.cassandra.CassandraBackendFactory
 ...
 
