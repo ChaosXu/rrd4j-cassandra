@@ -18,7 +18,7 @@ import static org.rrd4j.DsType.GAUGE;
  * @author chaos
  */
 public class PerformanceTest {
-    private static final int rrdCount = 50000;
+    private static final int rrdCount = 10000;
 
     private List<RrdDb> rrdDbs = new LinkedList<RrdDb>();
 
@@ -29,10 +29,10 @@ public class PerformanceTest {
         TimeTrace timeTrace = new TimeTrace();
         timeTrace.begin();
         for (int i = 0; i < rrdCount; i++) {
-            RrdDef rrdDef = new RrdDef("pt-" + i, 0, 60);
+            RrdDef rrdDef = new RrdDef("pt-5m-" + i, 0, 300);
             rrdDef.setVersion(2);
             rrdDef.addDatasource("ds", GAUGE, 3600, -5, 30);
-            rrdDef.addArchive(AVERAGE, 0.5, 60, 999);
+            rrdDef.addArchive(AVERAGE, 0.5, 300, 1000);
             rrdDbs.add(new RrdDb(rrdDef, factory));
         }
         timeTrace.end();
@@ -55,7 +55,7 @@ public class PerformanceTest {
             for (int i = 0; i < 1; i++) {
                 long sampleTime = timeStamp;
                 rrdDb.createSample(sampleTime).setValue("ds", 30).update();
-                timeStamp += 60;
+                timeStamp += 300;
             }
         }
         timeTrace.end();
