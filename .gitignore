@@ -1,1 +1,10 @@
-target/
+target
+.classpath
+.project
+.settings
+*.log
+.idea
+*.iml
+*.ipr
+*.iws
+.*.swp
